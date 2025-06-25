@@ -6,15 +6,17 @@
 //! the listed schemes, see
 //! [iana.org](https://www.iana.org/assignments/uri-schemes/uri-schemes.xhtml).
 
+use alloc::borrow::Cow;
+use alloc::string::String;
+use alloc::string::ToString;
+use core::convert::{Infallible, TryFrom};
+use core::error::Error;
+use core::fmt::{self, Display, Formatter};
+use core::hash::{Hash, Hasher};
+use core::str;
 use fnv::FnvBuildHasher;
+use hashbrown::HashMap;
 use lazy_static::lazy_static;
-use std::borrow::Cow;
-use std::collections::HashMap;
-use std::convert::{Infallible, TryFrom};
-use std::error::Error;
-use std::fmt::{self, Display, Formatter};
-use std::hash::{Hash, Hasher};
-use std::str;
 
 use crate::utility::normalize_string;
 

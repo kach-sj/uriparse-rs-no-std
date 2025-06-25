@@ -1,6 +1,6 @@
 [package]
 authors = ["Scott Godwin <sgodwincs@gmail.com>"]
-categories = ["parsing"]
+categories = ["parsing", "no-std"]
 description = "A URI parser including relative references"
 edition = "2021"
 homepage = "https://github.com/sgodwincs/uriparse-rs"
@@ -9,6 +9,7 @@ name = "uriparse"
 readme = "README.md"
 repository = "https://github.com/sgodwincs/uriparse-rs"
 version = "0.6.4"
+rust-version = "1.81.0"
 
 [[bench]]
 harness = false
@@ -16,11 +17,13 @@ name = "parse"
 
 [features]
 default = []
+std = ["fnv/std", "lazy_static/spin", "serde?/std"]
 
 [dependencies]
-fnv = "1.0.7"
-lazy_static = "1.4.0"
-serde = { version = "1.0.115", features = ["derive"], optional = true }
+fnv = { version = "1.0.7", default-features = false }
+hashbrown = { version = "0.13" }
+lazy_static = { version = "1.4.0", default-features = false, features = ["spin_no_std"] }
+serde = { version = "1.0.115", default-features = false, features = ["derive"], optional = true }
 
 [dev-dependencies]
 criterion = "0.2.10"

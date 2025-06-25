@@ -2,13 +2,15 @@
 //!
 //! See [[RFC3986, Section 3.5](https://tools.ietf.org/html/rfc3986#section-3.5)].
 
-use std::borrow::Cow;
-use std::convert::{Infallible, TryFrom};
-use std::error::Error;
-use std::fmt::{self, Display, Formatter};
-use std::hash::{Hash, Hasher};
-use std::ops::Deref;
-use std::str;
+use alloc::borrow::Cow;
+use alloc::string::String;
+use alloc::string::ToString;
+use core::convert::{Infallible, TryFrom};
+use core::error::Error;
+use core::fmt::{self, Display, Formatter};
+use core::hash::{Hash, Hasher};
+use core::ops::Deref;
+use core::str;
 
 use crate::utility::{
     get_percent_encoded_value, normalize_string, percent_encoded_equality, percent_encoded_hash,

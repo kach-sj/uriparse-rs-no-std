@@ -1,4 +1,5 @@
-use std::hash::{Hash, Hasher};
+use alloc::string::String;
+use core::hash::{Hash, Hasher};
 
 #[rustfmt::skip]
 pub const UNRESERVED_CHAR_MAP: [u8; 256] = [
@@ -192,8 +193,8 @@ pub fn percent_encoded_equality(left: &[u8], right: &[u8], case_sensitive: bool)
 
 #[cfg(test)]
 mod test {
-    use std::collections::hash_map::RandomState;
-    use std::hash::BuildHasher;
+    use hashbrown::hash_map::DefaultHashBuilder;
+    use core::hash::BuildHasher;
 
     use super::*;
 
@@ -249,7 +250,7 @@ mod test {
             left_hash == right_hash
         }
 
-        let state = RandomState::new();
+        let state = DefaultHashBuilder::new();
 
         // Case sensitive
 

@@ -1,7 +1,9 @@
-use std::convert::{Infallible, TryFrom};
-use std::error::Error;
-use std::fmt::{self, Display, Formatter, Write};
-use std::mem;
+use alloc::string::String;
+use alloc::string::ToString;
+use core::convert::{Infallible, TryFrom};
+use core::error::Error;
+use core::fmt::{self, Display, Formatter, Write};
+use core::mem;
 
 use crate::authority::{parse_authority, Authority, AuthorityError, Host, Password, Username};
 use crate::fragment::{Fragment, FragmentError};
