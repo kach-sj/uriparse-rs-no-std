@@ -22,15 +22,17 @@
 //! comes down to it just being too expensive to do a proper host comparison. To do so would require
 //! conversion to [`IpAddr`], which in the case of [`Ipv6Addr`] can be expensive.
 
-use std::borrow::Cow;
-use std::convert::{Infallible, TryFrom};
-use std::error::Error;
-use std::fmt::{self, Display, Formatter, Write};
-use std::hash::{Hash, Hasher};
-use std::mem;
-use std::net::{IpAddr, Ipv4Addr, Ipv6Addr};
-use std::ops::Deref;
-use std::str;
+use alloc::borrow::Cow;
+use alloc::string::String;
+use alloc::string::ToString;
+use core::convert::{Infallible, TryFrom};
+use core::error::Error;
+use core::fmt::{self, Display, Formatter, Write};
+use core::hash::{Hash, Hasher};
+use core::mem;
+use core::net::{IpAddr, Ipv4Addr, Ipv6Addr};
+use core::ops::Deref;
+use core::str;
 
 use crate::utility::{
     get_percent_encoded_value, normalize_string, percent_encoded_equality, percent_encoded_hash,
